@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="{{ static_url("css/register.css") }}">
+</head>
+
+<body>
+
+  <div class="register-wrap">
+    <h2>用户注册</h2>
+
+    <div class="form">
+      <form action="http://everypay.sinaapp.com" method="post" onsubmit="return check()">
+        <input type="text" name="action" value="reg" style="display:none"/>
+        <input type="text" placeholder="用户名" name="username" id="username" onblur="checkuser()" />
+        <image src="{{ static_url("img/x.png") }}" style="display:none" id="ximg"/>
+        <input type="password" placeholder="密码" name="password" id="password"/>
+        <input type="password" placeholder="确认密码" name="repassword" id="repassword"/>
+        <input type="text" placeholder="手机号码" name="telephone" id="telephone"/>
+        <input type="text" placeholder="微信号(选填)" name="wechat" id="wechat"/>
+        <input type="submit" value="注  册" />
+      </form>
+      <a href="?page=login.html"> <p> 已有账号? 登录 </p></a>
+    </div>
+  </div>
+
+  <script src='https://code.jquery.com/jquery-1.10.0.min.js'></script>
+  <script src="{{ static_url("js/register.js") }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>“人人付”</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="{{ static_url("css/request.css") }}" />
+</head>
+
+<body>
+    <nav>
+        <span class='dirl'>
+            <img src="{{ static_url("img/1.gif") }}">
+            <a href="#" onclick="pagechange(0);return false;">需求池</a>
+        </span>
+        <span class='dirm'>
+            <img src="{{ static_url("img/2.gif") }}">
+            <a href="#" onclick="pagechange(1);return false;">已发请求</a>
+        </span>
+        <span class='dirr'>
+            <img src="{{ static_url("img/3.gif") }}">
+            <a href="#" onclick="pagechange(2);return false;">已接请求</a>
+        </span>
+        <span class='diru'>
+            <a id='user'>{% raw username %} ({% raw userid %})</a>
+        </span>     
+        <span class='leave'>
+            <a href="/?page=login.html">退出</a>
+        </span>
+    </nav>
+    <div class='head'>
+    </div>
+
+    <div class='list'>
+        
+        {% for item in requests %}
+            {% if item[6] == "-1" %}
+            <div class="just">
+            {% elif item[6] == "0" %}
+            <div class="ing">
+            {% else %}
+            <div class="item">
+            {% end %}
+                <dl>
+                    <dt>订单号：<b id="orderid">{% raw item[7] %}</b></dt>
+                    <dt>{% raw item[2] %} {% raw item[3] %} (
+                    {% if item[6] == "-1" %}
+                        待接单
+                    {% elif item[6] == "0" %}
+                        解决中
+                    {% else %}
+                        {% raw item[6] %}星
+                    {% end %})</dt>
+                    <dd>{% raw item[0]%}</dd>
+                    <dd>酬金：{% raw item[4] %}</dd>
+                    <dd>{% raw item[1] %} 接头</dd>
+                    <dt>{% raw item[5] %}
+                    {% if item[6] == "0" %}
+                    <button type="button" onclick="star(5)">5星</button>
+                    <button type="button" onclick="star(4)">4星</button>
+                    <button type="button" onclick="star(3)">3星</button>
+                    <button type="button" onclick="star(2)">2星</button>
+                    <button type="button" onclick="star(1)">1星</button>
+                    {% end %}
+                    </dt>
+                </dl>
+            </div>
+        {% end %}
+    </div>
+
+    <div class="tic">
+        <a id="release" href="#" onclick="pagechange(3);return false;">发布新需求</a>
+    </div>
+    <script src='https://code.jquery.com/jquery-1.10.0.min.js'></script>
+    <script src="{{ static_url("js/star.js") }}"></script>
+</body>
+</html>

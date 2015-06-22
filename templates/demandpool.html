@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>“人人付”</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="{{ static_url("css/demandpool.css") }}" />
+</head>
+
+<body>
+    <nav>
+        <span class='dirl'>
+            <img src="{{ static_url("img/1.gif") }}">
+            <a href="#" onclick="pagechange(0);return false;">需求池</a>
+        </span>
+        <span class='dirm'>
+            <img src="{{ static_url("img/2.gif") }}">
+            <a href="#" onclick="pagechange(1);return false;">已发请求</a>
+        </span>
+        <span class='dirr'>
+            <img src="{{ static_url("img/3.gif") }}">
+            <a href="#" onclick="pagechange(2);return false;">已接请求</a>
+        </span>
+        <span class='diru'>
+            <a id='user'>{% raw username %} ({% raw userid %})</a>
+        </span>     
+        <span class='leave'>
+            <a href="/?page=login.html">退出</a>
+        </span>
+    </nav>
+    <div class='head'>
+    
+    </div>
+    <div class='list'>
+        {% for i in demands %}
+        <div class="item">
+            <dl>
+                <dt>订单号：<b id="orderid">{% raw i[6] %}</b></dt>
+                <dt>{% raw i[2] %} {% raw i[3] %}</dt>
+                <dd>{% raw i[0]%}</dd>
+                <dd>酬金：{% raw i[4] %}</dd>
+                <dd>{% raw i[1] %} 接头</dd>
+                <dt>{% raw i[5] %}
+                <button id= "rco" type="button" onclick="recieveOrder(this)">接单</button>
+                </dt>
+            </dl>
+        </div>
+        {% end %}
+        
+    </div>
+    
+    <div class="tic">
+        <a id="release" href="#" onclick="pagechange(3);return false;">发布新需求</a>
+    </div>
+    <script src='https://code.jquery.com/jquery-1.10.0.min.js'></script>
+    <script src="{{ static_url("js/order.js") }}"></script>
+</body>
+</html>

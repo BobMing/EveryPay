@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>发布需求</title>
+  <link rel="stylesheet" href="{{ static_url("css/release.css") }}">
+</head>
+
+<body>
+
+  <div class="informNeed-wrap">
+    <h2>发布需求</h2>
+
+    <div class="form">
+      <p id="userid" style="display:none">{% raw userid %}</p>
+      <p id="username" style="display:none">{% raw username %}</p>
+      <input type="text" placeholder="需求内容" id="content"/>
+      <br />
+      <input type="text" placeholder="报酬金额" id="quote"/>元
+      <br />
+      <input type="text" placeholder="接头地点" id="place"/>
+      <br />
+      <button id="success" onclick="success()">提 交</button>
+      <button id="cancel" onclick="cancel()">取 消</button>
+    </div>
+
+  </div>
+
+  <script src='https://code.jquery.com/jquery-1.10.0.min.js'></script>
+  <script src="{{ static_url("js/release.js") }}" type="text/javascript"></script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel="stylesheet" href="{{ static_url("css/login.css") }}">
+</head>
+
+<body>
+
+  <div class="login-wrap">
+    <h2>用户登录</h2>
+
+    <div class="form">
+      <p id="error" style="display:none">您的用户名或密码错误</p>
+      <input type="text" name="action" value="log" style="display:none"/>
+      <input type="text" placeholder="用户名" name="username" id="username"/>
+      <input type="password" placeholder="密码" name="password" id="password"/>
+      <button id="submit" onclick="login()"> 登 陆</button>
+      <a href="?page=register.html"> <p> 还没有账号? 注册 </p></a>
+    </div>
+  </div>
+
+  <script src='https://code.jquery.com/jquery-1.10.0.min.js'></script>
+  <script src="{{ static_url("js/login.js") }}"></script>
+
+</body>
+</html>
